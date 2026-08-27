@@ -6,8 +6,11 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 
 const BASE = (process.env.TEST_BASE_URL || 'https://cbse-answer-validation.vercel.app').replace(/\/$/, '');
-const ADMIN_EMAIL = process.env.TEST_ADMIN_EMAIL || 'monojkantisaha@gmail.com';
-const ADMIN_PASS = process.env.TEST_ADMIN_PASSWORD || 'Kolkata@123';
+const ADMIN_EMAIL = process.env.TEST_ADMIN_EMAIL;
+const ADMIN_PASS = process.env.TEST_ADMIN_PASSWORD;
+if (!ADMIN_EMAIL || !ADMIN_PASS) {
+  throw new Error('Set TEST_ADMIN_EMAIL and TEST_ADMIN_PASSWORD env vars to run integration tests');
+}
 
 let adminToken = '';
 let studentToken = '';
