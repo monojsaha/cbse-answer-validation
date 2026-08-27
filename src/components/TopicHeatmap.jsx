@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { topics as topicsApi } from '../lib/api';
 import { SUBJECT_META } from '../lib/constants';
 
@@ -29,11 +29,22 @@ export default function TopicHeatmap() {
     return 'heat-5';
   }
 
+  function officialHeatClass(w) {
+    if (!w) return 'heat-0';
+    if (w <= 3) return 'heat-1';
+    if (w <= 6) return 'heat-2';
+    if (w <= 9) return 'heat-3';
+    if (w <= 12) return 'heat-4';
+    return 'heat-5';
+  }
+
+  const hasTaggedData = data.some(r => Object.keys(r.years || {}).length > 0);
+
   return (
     <div>
       <div className="page-header">
         <h2>Topic-wise Marks Distribution</h2>
-        <p>See how many marks come from each chapter across years. Based on official CBSE syllabus and question tagging.</p>
+        <p>Official CBSE syllabus weightage per chapter. Actual marks from tagged papers appear in year columns once questions are added.</p>
       </div>
 
       <div className="filter-bar" style={{ marginBottom: 24 }}>
@@ -50,19 +61,25 @@ export default function TopicHeatmap() {
 
       {!loading && data.length === 0 && (
         <div className="empty-state">
-          <h3>No data yet</h3>
-          <p>Admin needs to tag questions with topics before the distribution appears.</p>
+          <h3>No topic data for this subject</h3>
+          <p>Admin can add topics via the Admin Panel.</p>
         </div>
       )}
 
       {!loading && data.length > 0 && (
         <div className="card" style={{ overflowX: 'auto' }}>
+          {!hasTaggedData && (
+            <div style={{ padding: '10px 16px', background: 'var(--warning-light)', color: 'var(--warning)', fontSize: '0.85rem', borderRadius: 'var(--radius-sm)', marginBottom: 12 }}>
+              Showing official CBSE syllabus weightage. Year-wise columns will fill in once questions are tagged.
+            </div>
+          )}
           <table className="heatmap-table">
             <thead>
               <tr>
                 <th>Unit / Chapter</th>
+                <th style={{ textAlign: 'center' }}>Official Wt.</th>
                 {ALL_YEARS.map(y => <th key={y} style={{ textAlign: 'center' }}>{y}</th>)}
-                <th style={{ textAlign: 'center' }}>Total</th>
+                {hasTaggedData && <th style={{ textAlign: 'center' }}>Tagged Total</th>}
               </tr>
             </thead>
             <tbody>
@@ -74,12 +91,15 @@ export default function TopicHeatmap() {
                       <div className="unit-label">{row.unit_name}</div>
                       {row.chapter_name !== row.unit_name && <div className="chapter-label">{row.chapter_name}</div>}
                     </td>
+                    <td className={`heatmap-cell ${officialHeatClass(row.official_marks_weightage)}`}>
+                      {row.official_marks_weightage ?? '—'}
+                    </td>
                     {ALL_YEARS.map(y => (
                       <td key={y} className={`heatmap-cell ${heatClass(row.years[y])}`}>
                         {row.years[y] || '—'}
                       </td>
                     ))}
-                    <td className="heatmap-cell heat-4">{total}</td>
+                    {hasTaggedData && <td className="heatmap-cell heat-4">{total || '—'}</td>}
                   </tr>
                 );
               })}
@@ -91,7 +111,7 @@ export default function TopicHeatmap() {
       <div className="card mt-4" style={{ marginTop: 24 }}>
         <div className="card-header"><h3 className="card-title">Heat Scale</h3></div>
         <div className="flex-row" style={{ flexWrap: 'wrap', gap: 8 }}>
-          {['0 marks', '1–2', '3–5', '6–8', '9–12', '13+'].map((l, i) => (
+          {['0 marks', '1–2 / 1–3', '3–5 / 4–6', '6–8 / 7–9', '9–12 / 10–12', '13+'].map((l, i) => (
             <span key={i} className={`heatmap-cell heat-${i}`} style={{ padding: '4px 12px', borderRadius: 4 }}>{l}</span>
           ))}
         </div>
@@ -99,4 +119,3 @@ export default function TopicHeatmap() {
     </div>
   );
 }
-

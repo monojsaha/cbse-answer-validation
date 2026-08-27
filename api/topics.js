@@ -25,29 +25,42 @@ module.exports = async (req, res) => {
 
   const { subject } = req.query;
 
-  // Get all questions with topic tags and paper info for distribution
-  let query = supabase
+  // Load official syllabus weightage from topics table as baseline
+  let topicsQuery = supabase.from('topics').select('*').order('unit_name').order('chapter_name');
+  if (subject) topicsQuery = topicsQuery.eq('subject', subject);
+  const { data: topicRows } = await topicsQuery;
+
+  // Aggregate tagged questions for actual marks-per-year distribution
+  let qQuery = supabase
     .from('questions')
     .select('marks, topic_id, topics(unit_name, chapter_name, subject), paper_id, papers(exam_year, subject, academic_session)')
     .not('topic_id', 'is', null);
+  const { data: qData } = await qQuery;
 
-  if (subject) {
-    query = query.eq('papers.subject', subject);
+  // Build distribution map keyed by topic id
+  const distribution = {};
+
+  // Seed all topics first with official weightage
+  for (const t of (topicRows || [])) {
+    const key = t.id;
+    distribution[key] = {
+      unit_name: t.unit_name,
+      chapter_name: t.chapter_name,
+      subject: t.subject,
+      official_marks_weightage: t.official_marks_weightage,
+      years: {}
+    };
   }
 
-  const { data, error } = await query;
-  if (error) return res.status(500).json({ error: error.message });
-
-  // Aggregate: { chapter_name: { year: totalMarks } }
-  const distribution = {};
-  for (const q of (data || [])) {
+  // Overlay actual tagged-question marks per year
+  for (const q of (qData || [])) {
     if (!q.topics || !q.papers) continue;
     if (subject && q.papers.subject !== subject) continue;
-    const chapter = q.topics.chapter_name;
-    const unit = q.topics.unit_name;
+    const key = q.topic_id;
+    if (!distribution[key]) {
+      distribution[key] = { unit_name: q.topics.unit_name, chapter_name: q.topics.chapter_name, subject: q.topics.subject, official_marks_weightage: null, years: {} };
+    }
     const year = q.papers.exam_year;
-    const key = `${unit}__${chapter}`;
-    if (!distribution[key]) distribution[key] = { unit_name: unit, chapter_name: chapter, years: {} };
     distribution[key].years[year] = (distribution[key].years[year] || 0) + (q.marks || 0);
   }
 
