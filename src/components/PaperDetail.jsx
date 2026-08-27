@@ -1,0 +1,114 @@
+﻿import { useState, useEffect } from 'react';
+import { ArrowLeft, ExternalLink, FileText, List } from 'lucide-react';
+import { papers as papersApi } from '../lib/api';
+import { SUBJECT_META } from '../lib/constants';
+import QuestionRow from './QuestionRow';
+
+export default function PaperDetail({ paperId, onBack }) {
+  const [paper, setPaper] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [view, setView] = useState('pdf');
+  const [showAnswer, setShowAnswer] = useState(false);
+
+  useEffect(() => {
+    papersApi.get(paperId).then(d => { setPaper(d); setLoading(false); }).catch(() => setLoading(false));
+  }, [paperId]);
+
+  if (loading) return <div className="loading">Loading paper&hellip;</div>;
+  if (!paper) return <div className="empty-state"><h3>Paper not found</h3></div>;
+
+  const subjectMeta = SUBJECT_META[paper.subject] || {};
+  const hasRepeats = (paper.questions || []).some(q => {
+    const f1 = q.repeat_flags_1 || [], f2 = q.repeat_flags_2 || [];
+    return [...f1, ...f2].some(f => f.admin_verdict === 'confirmed');
+  });
+
+  return (
+    <div className="paper-detail">
+      <button className="back-btn" onClick={onBack}><ArrowLeft size={16} /> Back to Papers</button>
+
+      <div className="paper-detail-header">
+        <div>
+          <h2 className="paper-detail-title">{subjectMeta.label} &mdash; {paper.academic_session}</h2>
+          <div className="flex-row text-sm text-muted" style={{ marginTop: 4 }}>
+            <span className="badge badge-primary">{paper.paper_type === 'board' ? 'Board Exam' : 'SQP'}</span>
+            <span>Set {paper.set_code}</span>
+            {paper.total_marks && <span>{paper.total_marks} marks</span>}
+            {paper.duration_minutes && <span>{paper.duration_minutes} min</span>}
+            {hasRepeats && <span className="badge badge-danger">Has Repeated Questions</span>}
+          </div>
+        </div>
+        <div className="flex-row">
+          {paper.paper_url && (
+            <a href={paper.paper_url} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm">
+              <ExternalLink size={14} /> Question Paper
+            </a>
+          )}
+          {paper.answer_key_url && (
+            <a href={paper.answer_key_url} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm">
+              <ExternalLink size={14} /> Marking Scheme
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div className="view-toggle">
+        <button className={view === 'pdf' ? 'active' : ''} onClick={() => setView('pdf')}>
+          <FileText size={14} /> PDF View
+        </button>
+        <button className={view === 'questions' ? 'active' : ''} onClick={() => setView('questions')}>
+          <List size={14} /> Question List ({(paper.questions || []).length})
+        </button>
+      </div>
+
+      {view === 'pdf' && (
+        <div>
+          {paper.paper_url ? (
+            <iframe
+              src={paper.paper_url}
+              className="pdf-frame"
+              title="Question Paper"
+            />
+          ) : (
+            <div className="pdf-unavailable">
+              <FileText size={32} />
+              <p>PDF not yet linked</p>
+              <p className="text-xs">Ask admin to add the official CBSE paper URL</p>
+            </div>
+          )}
+          {paper.answer_key_url && (
+            <div style={{ marginTop: 16 }}>
+              <div className="flex-row mb-4">
+                <h3 className="card-title">Marking Scheme</h3>
+              </div>
+              <iframe src={paper.answer_key_url} className="pdf-frame" title="Marking Scheme" />
+            </div>
+          )}
+        </div>
+      )}
+
+      {view === 'questions' && (
+        <div>
+          <div className="flex-row mb-4">
+            <span className="text-sm text-muted">{(paper.questions || []).length} questions</span>
+            <div className="spacer" />
+            <label className="flex-row text-sm" style={{ cursor: 'pointer', gap: 6 }}>
+              <input type="checkbox" checked={showAnswer} onChange={e => setShowAnswer(e.target.checked)} />
+              Show answer keys
+            </label>
+          </div>
+          {(paper.questions || []).length === 0 ? (
+            <div className="empty-state"><h3>No questions added yet</h3><p>Admin can add questions via the Admin Panel.</p></div>
+          ) : (
+            <div className="question-list">
+              {(paper.questions || []).map(q => (
+                <QuestionRow key={q.id} question={q} showAnswer={showAnswer} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+

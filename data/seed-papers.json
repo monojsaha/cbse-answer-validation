@@ -1,0 +1,233 @@
+[
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "physics",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2024/Senior_Secondary/Physics_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2024/Physics_MS.pdf"
+  },
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "chemistry",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2024/Senior_Secondary/Chemistry_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2024/Chemistry_MS.pdf"
+  },
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "mathematics",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 80,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2024/Senior_Secondary/Mathematics_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2024/Mathematics_MS.pdf"
+  },
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "computer_science",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2024/Senior_Secondary/ComputerScience_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2024/ComputerScience_MS.pdf"
+  },
+  {
+    "academic_session": "2022-23",
+    "exam_year": 2023,
+    "subject": "physics",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2023/Senior_Secondary/Physics_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2023/Physics_MS.pdf"
+  },
+  {
+    "academic_session": "2022-23",
+    "exam_year": 2023,
+    "subject": "chemistry",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2023/Senior_Secondary/Chemistry_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2023/Chemistry_MS.pdf"
+  },
+  {
+    "academic_session": "2022-23",
+    "exam_year": 2023,
+    "subject": "mathematics",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 80,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2023/Senior_Secondary/Mathematics_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2023/Mathematics_MS.pdf"
+  },
+  {
+    "academic_session": "2022-23",
+    "exam_year": 2023,
+    "subject": "computer_science",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2023/Senior_Secondary/ComputerScience_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2023/ComputerScience_MS.pdf"
+  },
+  {
+    "academic_session": "2021-22 Term2",
+    "exam_year": 2022,
+    "subject": "physics",
+    "paper_type": "board",
+    "set_code": "Term2",
+    "total_marks": 35,
+    "duration_minutes": 120,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2022/Senior_Secondary/Physics_Term2_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2022/Physics_Term2_MS.pdf"
+  },
+  {
+    "academic_session": "2021-22 Term1",
+    "exam_year": 2022,
+    "subject": "physics",
+    "paper_type": "board",
+    "set_code": "Term1",
+    "total_marks": 35,
+    "duration_minutes": 90,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2022/Senior_Secondary/Physics_Term1_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2022/Physics_Term1_MS.pdf"
+  },
+  {
+    "academic_session": "2021-22 Term2",
+    "exam_year": 2022,
+    "subject": "chemistry",
+    "paper_type": "board",
+    "set_code": "Term2",
+    "total_marks": 35,
+    "duration_minutes": 120,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2022/Senior_Secondary/Chemistry_Term2_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2022/Chemistry_Term2_MS.pdf"
+  },
+  {
+    "academic_session": "2021-22 Term2",
+    "exam_year": 2022,
+    "subject": "mathematics",
+    "paper_type": "board",
+    "set_code": "Term2",
+    "total_marks": 40,
+    "duration_minutes": 120,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2022/Senior_Secondary/Mathematics_Term2_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2022/Mathematics_Term2_MS.pdf"
+  },
+  {
+    "academic_session": "2021-22 Term2",
+    "exam_year": 2022,
+    "subject": "computer_science",
+    "paper_type": "board",
+    "set_code": "Term2",
+    "total_marks": 35,
+    "duration_minutes": 120,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2022/Senior_Secondary/ComputerScience_Term2_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2022/ComputerScience_Term2_MS.pdf"
+  },
+  {
+    "academic_session": "2019-20",
+    "exam_year": 2020,
+    "subject": "physics",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2020/Senior_Secondary/Physics_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2020/Physics_MS.pdf"
+  },
+  {
+    "academic_session": "2019-20",
+    "exam_year": 2020,
+    "subject": "chemistry",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2020/Senior_Secondary/Chemistry_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2020/Chemistry_MS.pdf"
+  },
+  {
+    "academic_session": "2019-20",
+    "exam_year": 2020,
+    "subject": "mathematics",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 80,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2020/Senior_Secondary/Mathematics_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2020/Mathematics_MS.pdf"
+  },
+  {
+    "academic_session": "2019-20",
+    "exam_year": 2020,
+    "subject": "computer_science",
+    "paper_type": "board",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/question_paper2020/Senior_Secondary/ComputerScience_QP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/Marking_Scheme2020/ComputerScience_MS.pdf"
+  },
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "physics",
+    "paper_type": "sqp",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/Physics_SQP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/Physics_SQP_MS.pdf"
+  },
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "chemistry",
+    "paper_type": "sqp",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/Chemistry_SQP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/Chemistry_SQP_MS.pdf"
+  },
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "mathematics",
+    "paper_type": "sqp",
+    "set_code": "1",
+    "total_marks": 80,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/Mathematics_SQP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/Mathematics_SQP_MS.pdf"
+  },
+  {
+    "academic_session": "2023-24",
+    "exam_year": 2024,
+    "subject": "computer_science",
+    "paper_type": "sqp",
+    "set_code": "1",
+    "total_marks": 70,
+    "duration_minutes": 180,
+    "paper_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/ComputerScience_SQP.pdf",
+    "answer_key_url": "https://cbseacademic.nic.in/web_material/SQP/ClassXII_SQP_2023-24/ComputerScience_SQP_MS.pdf"
+  }
+]
