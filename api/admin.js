@@ -1,5 +1,4 @@
 const { createClient } = require('@supabase/supabase-js');
-const natural = require('natural');
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
 
@@ -45,6 +44,7 @@ function cosineSimilarity(a, b) {
 module.exports = async (req, res) => {
   setCors(res);
   if (req.method === 'OPTIONS') return res.status(200).end();
+  try {
 
   const { action } = req.query;
 
@@ -121,6 +121,8 @@ module.exports = async (req, res) => {
   if (req.method === 'POST' && action === 'detect') {
     const session = await requireAdmin(req, res);
     if (!session) return;
+    // Lazy-load natural here only — avoids crashing the whole module on import
+    const natural = require('natural');
     const { subject } = req.body || {};
 
     const { data: questions } = await supabase
@@ -194,5 +196,9 @@ module.exports = async (req, res) => {
     return res.json(data || []);
   }
 
-  res.status(404).json({ error: 'Not found' });
+    res.status(404).json({ error: 'Not found' });
+  } catch (err) {
+    console.error('Admin handler error:', err);
+    res.status(500).json({ error: err.message });
+  }
 };

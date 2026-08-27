@@ -83,8 +83,12 @@ export default function RepeatsList({ isAdmin }) {
       {loading && <div className="loading">Loading&hellip;</div>}
       {!loading && list.length === 0 && (
         <div className="empty-state">
-          <h3>No repeated questions found</h3>
-          <p>{isAdmin ? 'Run auto-detect to scan for similar questions across papers.' : 'No confirmed repeated questions yet.'}</p>
+          <h3>No {verdict === 'confirmed' ? 'confirmed ' : verdict === 'pending' ? 'pending ' : verdict === 'dismissed' ? 'dismissed ' : ''}repeated questions found</h3>
+          <p>
+            {isAdmin
+              ? 'Add question text via Admin Panel → Questions, then click "Run Auto-Detect" above to scan for similar questions across years.'
+              : 'No confirmed repeated questions yet. They will appear here once admin verifies similarity matches.'}
+          </p>
         </div>
       )}
 

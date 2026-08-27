@@ -40,13 +40,17 @@ module.exports = async (req, res) => {
     const { action, email, password, displayName } = req.body || {};
 
     if (action === 'register') {
+      if (!email || !password) return res.status(400).json({ error: 'email and password are required' });
       const hash = await bcrypt.hash(password, 10);
       const { data, error } = await supabase
         .from('user_accounts')
         .insert({ email, password_hash: hash, display_name: displayName || email, role: 'student' })
         .select()
         .single();
-      if (error) return res.status(400).json({ error: error.message });
+      if (error) {
+        const isDuplicate = error.code === '23505' || error.message.includes('duplicate') || error.message.includes('unique');
+        return res.status(isDuplicate ? 409 : 400).json({ error: isDuplicate ? 'Email already registered' : error.message });
+      }
       const token = crypto.randomUUID();
       const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
       await supabase.from('sessions').insert({ token, user_id: data.id, role: data.role, expires_at: expires });
