@@ -65,7 +65,7 @@ export default function PaperDetail({ paperId, onBack }) {
         <div>
           {paper.paper_url ? (
             <iframe
-              src={paper.paper_url}
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(paper.paper_url)}&embedded=true`}
               className="pdf-frame"
               title="Question Paper"
             />
@@ -81,7 +81,11 @@ export default function PaperDetail({ paperId, onBack }) {
               <div className="flex-row mb-4">
                 <h3 className="card-title">Marking Scheme</h3>
               </div>
-              <iframe src={paper.answer_key_url} className="pdf-frame" title="Marking Scheme" />
+              <iframe
+                src={`https://docs.google.com/viewer?url=${encodeURIComponent(paper.answer_key_url)}&embedded=true`}
+                className="pdf-frame"
+                title="Marking Scheme"
+              />
             </div>
           )}
         </div>
