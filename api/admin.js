@@ -171,6 +171,16 @@ module.exports = async (req, res) => {
     return res.json(data || []);
   }
 
+  // DELETE /api/admin?action=topic&id=xxx
+  if (req.method === 'DELETE' && action === 'topic') {
+    const session = await requireAdmin(req, res);
+    if (!session) return;
+    const { id } = req.query;
+    if (!id) return res.status(400).json({ error: 'id required' });
+    await supabase.from('topics').delete().eq('id', id);
+    return res.json({ ok: true });
+  }
+
   // PUT /api/admin?action=topic — add/update topic
   if (req.method === 'PUT' && action === 'topic') {
     const session = await requireAdmin(req, res);

@@ -402,7 +402,7 @@ describe('Admin API — Topic CRUD', () => {
         subject: 'physics',
         unit_name: '__Regression Test Unit__',
         chapter_name: '__Regression Test Chapter__',
-        official_marks_weightage: 3,
+        official_marks_weightage: 0,   // 0 so it doesn't skew the total-marks test
         academic_session: '2023-24',
       },
     });
@@ -514,10 +514,15 @@ describe('Data Integrity', () => {
 
 // ─── CLEANUP ─────────────────────────────────────────────────────────────────
 afterAll(async () => {
-  // Remove test student session + account
-  if (studentToken) {
-    await api('/api/auth', { method: 'DELETE', token: studentToken });
+  // Remove test student session
+  if (studentToken) await api('/api/auth', { method: 'DELETE', token: studentToken });
+
+  // Delete all stale __Regression Test Chapter__ topics left by any test run
+  if (adminToken) {
+    const { data: topics } = await api('/api/admin?action=topics', { token: adminToken });
+    const stale = (Array.isArray(topics) ? topics : []).filter(t => t.chapter_name === '__Regression Test Chapter__');
+    for (const t of stale) {
+      await api(`/api/admin?action=topic&id=${t.id}`, { token: adminToken, method: 'DELETE' });
+    }
   }
-  // Note: test topic (createdTopicId) intentionally left — no DELETE topic endpoint
-  // It can be removed from Admin Panel → Topics if needed
 });
