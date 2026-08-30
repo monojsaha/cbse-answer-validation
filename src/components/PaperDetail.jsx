@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, ExternalLink, List } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Download, List } from 'lucide-react';
 import { papers as papersApi } from '../lib/api';
 import { SUBJECT_META } from '../lib/constants';
 import QuestionRow from './QuestionRow';
+
+function makeDownloadUrl(pdfUrl, filename) {
+  const token = localStorage.getItem('cbse-token') || '';
+  return `/api/pdf-download?url=${encodeURIComponent(pdfUrl)}&filename=${encodeURIComponent(filename)}&token=${encodeURIComponent(token)}`;
+}
 
 export default function PaperDetail({ paperId, onBack }) {
   const [paper, setPaper] = useState(null);
@@ -44,8 +49,14 @@ export default function PaperDetail({ paperId, onBack }) {
             </a>
           )}
           {paper.answer_key_url && (
-            <a href={paper.answer_key_url} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm">
-              <ExternalLink size={14} /> Marking Scheme
+            <a
+              href={makeDownloadUrl(
+                paper.answer_key_url,
+                `${paper.subject}-${paper.academic_session}-set${paper.set_code}-marking-scheme.pdf`
+              )}
+              className="btn btn-primary btn-sm"
+            >
+              <Download size={14} /> Marking Scheme
             </a>
           )}
         </div>
