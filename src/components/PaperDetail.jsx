@@ -1,47 +1,12 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, ExternalLink, FileText, List, AlertCircle } from 'lucide-react';
+import { ArrowLeft, ExternalLink, List } from 'lucide-react';
 import { papers as papersApi } from '../lib/api';
 import { SUBJECT_META } from '../lib/constants';
 import QuestionRow from './QuestionRow';
 
-function PdfFrame({ url, title }) {
-  const [status, setStatus] = useState('loading'); // loading | ok | error
-
-  // Use our server-side proxy so CBSE PDFs load inside the iframe
-  const token = localStorage.getItem('cbse-token');
-  const proxyUrl = `/api/pdf-proxy?url=${encodeURIComponent(url)}`;
-
-  return (
-    <div style={{ position: 'relative' }}>
-      {status === 'loading' && (
-        <div className="pdf-loading-banner">Loading PDF&hellip;</div>
-      )}
-      {status === 'error' && (
-        <div className="pdf-error-banner">
-          <AlertCircle size={16} />
-          <span>Could not load PDF inline.</span>
-          <a href={url} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm" style={{ marginLeft: 8 }}>
-            <ExternalLink size={13} /> Open in new tab
-          </a>
-        </div>
-      )}
-      <iframe
-        key={url}
-        src={proxyUrl}
-        className="pdf-frame"
-        title={title}
-        onLoad={() => setStatus('ok')}
-        onError={() => setStatus('error')}
-        style={{ display: status === 'error' ? 'none' : 'block' }}
-      />
-    </div>
-  );
-}
-
 export default function PaperDetail({ paperId, onBack }) {
   const [paper, setPaper] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState('pdf');
   const [showAnswer, setShowAnswer] = useState(false);
 
   useEffect(() => {
@@ -86,58 +51,25 @@ export default function PaperDetail({ paperId, onBack }) {
         </div>
       </div>
 
-      <div className="view-toggle">
-        <button className={view === 'pdf' ? 'active' : ''} onClick={() => setView('pdf')}>
-          <FileText size={14} /> PDF View
-        </button>
-        <button className={view === 'questions' ? 'active' : ''} onClick={() => setView('questions')}>
-          <List size={14} /> Question List ({(paper.questions || []).length})
-        </button>
+      <div className="flex-row mb-4" style={{ marginTop: 16 }}>
+        <span className="flex-row text-sm text-muted"><List size={14} /> {(paper.questions || []).length} questions</span>
+        <div className="spacer" />
+        <label className="flex-row text-sm" style={{ cursor: 'pointer', gap: 6 }}>
+          <input type="checkbox" checked={showAnswer} onChange={e => setShowAnswer(e.target.checked)} />
+          Show answer keys
+        </label>
       </div>
 
-      {view === 'pdf' && (
-        <div>
-          {paper.paper_url
-            ? <PdfFrame url={paper.paper_url} title="Question Paper" />
-            : (
-              <div className="pdf-unavailable">
-                <FileText size={32} />
-                <p>PDF not yet linked</p>
-                <p className="text-xs">Ask admin to add the official CBSE paper URL</p>
-              </div>
-            )
-          }
-          {paper.answer_key_url && (
-            <div style={{ marginTop: 24 }}>
-              <h3 className="card-title" style={{ marginBottom: 8 }}>Marking Scheme</h3>
-              <PdfFrame url={paper.answer_key_url} title="Marking Scheme" />
-            </div>
-          )}
+      {(paper.questions || []).length === 0 ? (
+        <div className="empty-state">
+          <h3>No questions added yet</h3>
+          <p>Questions for this paper have not been seeded. Use the links above to view the official PDF.</p>
         </div>
-      )}
-
-      {view === 'questions' && (
-        <div>
-          <div className="flex-row mb-4">
-            <span className="text-sm text-muted">{(paper.questions || []).length} questions</span>
-            <div className="spacer" />
-            <label className="flex-row text-sm" style={{ cursor: 'pointer', gap: 6 }}>
-              <input type="checkbox" checked={showAnswer} onChange={e => setShowAnswer(e.target.checked)} />
-              Show answer keys
-            </label>
-          </div>
-          {(paper.questions || []).length === 0 ? (
-            <div className="empty-state">
-              <h3>No questions added yet</h3>
-              <p>Questions for this paper are being seeded. Switch to PDF View to read the paper directly.</p>
-            </div>
-          ) : (
-            <div className="question-list">
-              {(paper.questions || []).map(q => (
-                <QuestionRow key={q.id} question={q} showAnswer={showAnswer} />
-              ))}
-            </div>
-          )}
+      ) : (
+        <div className="question-list">
+          {(paper.questions || []).map(q => (
+            <QuestionRow key={q.id} question={q} showAnswer={showAnswer} />
+          ))}
         </div>
       )}
     </div>

@@ -143,13 +143,6 @@ input, textarea, select { font-family: inherit; }
 .paper-detail { display: flex; flex-direction: column; gap: 20px; }
 .paper-detail-header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .paper-detail-title { font-size: 1.25rem; font-weight: 700; flex: 1; }
-.view-toggle { display: flex; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
-.view-toggle button { padding: 7px 16px; border: none; background: var(--surface); color: var(--text-2); font-size: 0.85rem; font-weight: 500; transition: background 0.15s, color 0.15s; }
-.view-toggle button.active { background: var(--primary); color: white; }
-.pdf-frame { width: 100%; height: 75vh; border: 1px solid var(--border); border-radius: var(--radius); }
-.pdf-unavailable { background: var(--surface-2); border: 2px dashed var(--border); border-radius: var(--radius); height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; color: var(--text-3); }
-.pdf-loading-banner { padding: 8px 12px; background: var(--surface-2); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-3); margin-bottom: 6px; }
-.pdf-error-banner { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--warning-light, #fff8e1); color: var(--warning, #b45309); border-radius: var(--radius-sm); margin-bottom: 8px; font-size: 0.9rem; }
 
 /* Question row */
 .question-list { display: flex; flex-direction: column; gap: 12px; }
@@ -229,3 +222,68 @@ input, textarea, select { font-family: inherit; }
 .fw-bold { font-weight: 600; }
 .mt-4 { margin-top: 16px; }
 .mb-4 { margin-bottom: 16px; }
+
+/* ═══ RESPONSIVE ══════════════════════════════════════════════════════════════ */
+
+/* Scrollable wrapper for wide tables */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  .main { padding: 24px 16px; }
+  .card-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
+
+/* Mobile (≤640px) */
+@media (max-width: 640px) {
+  /* Topbar — two-row layout */
+  .topbar { height: auto; flex-wrap: wrap; padding: 10px 14px; gap: 8px; }
+  .topbar-brand { font-size: 0.95rem; }
+  .topbar-brand .brand-label { display: none; }
+  .topbar-nav { order: 3; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+  .topbar-nav::-webkit-scrollbar { height: 3px; }
+  .nav-btn { padding: 7px 10px; font-size: 0.8rem; white-space: nowrap; }
+  .topbar-actions { gap: 4px; }
+  .user-name { display: none; }
+
+  /* Main */
+  .main { padding: 16px 12px; }
+
+  /* Cards */
+  .card-grid { grid-template-columns: 1fr; }
+  .card { padding: 14px; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+
+  /* Filter bar */
+  .filter-bar { padding: 12px; gap: 8px; }
+  .filter-bar .form-group { min-width: 120px; }
+
+  /* Paper detail header */
+  .paper-detail-header { flex-direction: column; align-items: flex-start; }
+  .paper-detail-header .flex-row { flex-wrap: wrap; }
+
+  /* Question row */
+  .question-row { padding: 10px 12px; }
+
+  /* Admin tabs */
+  .admin-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; flex-wrap: nowrap; }
+  .admin-tab { font-size: 0.8rem; padding: 8px 12px; }
+
+  /* Modal — full screen on mobile */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { max-width: 100%; border-bottom-left-radius: 0; border-bottom-right-radius: 0; max-height: 92vh; }
+
+  /* Topic heatmap */
+  .chapter-cell { max-width: 120px; }
+
+  /* Auth */
+  .auth-card { padding: 24px 18px; }
+
+  /* Home */
+  .home-header h2 { font-size: 1.2rem; }
+}
+
+/* Tablet only (641px – 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .stats-row { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+}

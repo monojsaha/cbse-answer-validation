@@ -70,7 +70,7 @@ export default function App() {
       <header className="topbar">
         <span className="topbar-brand">
           <BookOpen size={22} />
-          CBSE Class 12
+          <span className="brand-label">CBSE Class 12</span>
         </span>
         <nav className="topbar-nav">
           {navItems.map(n => (
@@ -87,7 +87,7 @@ export default function App() {
           <button className="btn btn-ghost btn-sm" onClick={() => setDark(d => !d)} title="Toggle theme">
             {dark ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <span className="text-sm text-muted">{user.displayName}</span>
+          <span className="text-sm text-muted user-name">{user.displayName}</span>
           {user.role === 'admin' && <ShieldCheck size={16} style={{ color: 'var(--warning)' }} />}
           <button className="btn btn-ghost btn-sm" onClick={handleLogout} title="Logout">
             <LogOut size={16} />
