@@ -1,18 +1,47 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, ExternalLink, Download, List } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Download, List, Loader } from 'lucide-react';
 import { papers as papersApi } from '../lib/api';
 import { SUBJECT_META } from '../lib/constants';
 import QuestionRow from './QuestionRow';
 
-function makeDownloadUrl(pdfUrl, filename) {
+async function downloadPdf(pdfUrl, filename) {
   const token = localStorage.getItem('cbse-token') || '';
-  return `/api/pdf-download?url=${encodeURIComponent(pdfUrl)}&filename=${encodeURIComponent(filename)}&token=${encodeURIComponent(token)}`;
+  const res = await fetch(`/api/pdf-download?url=${encodeURIComponent(pdfUrl)}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || `Server returned ${res.status}`);
+  }
+  const blob = await res.blob();
+  const blobUrl = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = blobUrl;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(blobUrl);
 }
 
 export default function PaperDetail({ paperId, onBack }) {
   const [paper, setPaper] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  const [downloadError, setDownloadError] = useState('');
+
+  const handleDownload = async (pdfUrl, filename) => {
+    setDownloading(true);
+    setDownloadError('');
+    try {
+      await downloadPdf(pdfUrl, filename);
+    } catch (e) {
+      setDownloadError(e.message);
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   useEffect(() => {
     papersApi.get(paperId).then(d => { setPaper(d); setLoading(false); }).catch(() => setLoading(false));
@@ -49,18 +78,26 @@ export default function PaperDetail({ paperId, onBack }) {
             </a>
           )}
           {paper.answer_key_url && (
-            <a
-              href={makeDownloadUrl(
+            <button
+              className="btn btn-primary btn-sm"
+              disabled={downloading}
+              onClick={() => handleDownload(
                 paper.answer_key_url,
                 `${paper.subject}-${paper.academic_session}-set${paper.set_code}-marking-scheme.pdf`
               )}
-              className="btn btn-primary btn-sm"
             >
-              <Download size={14} /> Marking Scheme
-            </a>
+              {downloading ? <Loader size={14} style={{ animation: 'spin 1s linear infinite' }} /> : <Download size={14} />}
+              {downloading ? 'Downloading…' : 'Marking Scheme'}
+            </button>
           )}
         </div>
       </div>
+
+      {downloadError && (
+        <div style={{ padding: '8px 14px', background: 'var(--danger-light)', color: 'var(--danger)', borderRadius: 'var(--radius-sm)', fontSize: '0.875rem' }}>
+          Download failed: {downloadError}
+        </div>
+      )}
 
       <div className="flex-row mb-4" style={{ marginTop: 16 }}>
         <span className="flex-row text-sm text-muted"><List size={14} /> {(paper.questions || []).length} questions</span>

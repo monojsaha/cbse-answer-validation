@@ -8,8 +8,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 const ALLOWED_HOSTS = ['cbse.gov.in', 'cbseacademic.nic.in', 'cbseacademic.in'];
 
 async function requireAuth(req, res) {
-  const token = (req.headers['authorization'] || '').replace('Bearer ', '').trim()
-    || (req.query.token || '').trim();
+  const token = (req.headers['authorization'] || '').replace('Bearer ', '').trim();
   if (!token) { res.status(401).json({ error: 'Unauthorized' }); return false; }
   const { data } = await supabase.from('sessions').select('id').eq('token', token).gt('expires_at', new Date().toISOString()).single();
   if (!data) { res.status(401).json({ error: 'Unauthorized' }); return false; }
@@ -31,7 +30,7 @@ module.exports = async (req, res) => {
   const ok = await requireAuth(req, res);
   if (!ok) return;
 
-  const { url, filename } = req.query;
+  const { url } = req.query;
   if (!url) return res.status(400).json({ error: 'url param required' });
 
   let parsed;
@@ -40,7 +39,7 @@ module.exports = async (req, res) => {
   const hostOk = ALLOWED_HOSTS.some(h => parsed.hostname === h || parsed.hostname.endsWith('.' + h));
   if (!hostOk) return res.status(403).json({ error: 'URL not from an allowed CBSE domain' });
 
-  const safeFilename = (filename || 'cbse-marking-scheme.pdf').replace(/[^a-z0-9.\-_]/gi, '_');
+  const safeFilename = (parsed.pathname.split('/').pop() || 'cbse-marking-scheme.pdf').replace(/[^a-z0-9.\-_]/gi, '_');
 
   return new Promise((resolve) => {
     function stream(targetUrl, hops) {
