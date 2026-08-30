@@ -1,0 +1,419 @@
+[
+  {
+    "paper": { "subject": "physics", "exam_year": 2024, "paper_type": "board", "set_code": "1" },
+    "questions": [
+      {
+        "question_number": "1",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Electric Charges and Fields",
+        "question_text": "A charge Q is placed at the centre of a cube of side l. The electric flux through each face of the cube is",
+        "answer_text": "Q/6ε₀\n\nBy Gauss's law, total flux = Q/ε₀. Since the cube has 6 equal faces and the charge is at the centre, each face receives 1/6 of the total flux."
+      },
+      {
+        "question_number": "2",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Electromagnetic Waves",
+        "question_text": "Which of the following electromagnetic waves has the highest frequency?",
+        "answer_text": "Gamma rays\n\nOrder of frequency (low to high): Radio waves < Microwaves < Infrared < Visible < Ultraviolet < X-rays < Gamma rays."
+      },
+      {
+        "question_number": "3",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Moving Charges and Magnetism",
+        "question_text": "A current-carrying conductor is placed in a uniform magnetic field. The force on the conductor is zero when the angle between the current direction and the magnetic field is",
+        "answer_text": "0° or 180°\n\nForce F = BIL sinθ. When θ = 0° or 180°, sinθ = 0, hence F = 0."
+      },
+      {
+        "question_number": "4",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Dual Nature of Radiation and Matter",
+        "question_text": "The work function of a metal is 4.2 eV. The threshold frequency for photoelectric emission from this metal is (h = 6.626 × 10⁻³⁴ J·s)",
+        "answer_text": "1.02 × 10¹⁵ Hz\n\nν₀ = W/h = (4.2 × 1.6 × 10⁻¹⁹)/(6.626 × 10⁻³⁴) ≈ 1.02 × 10¹⁵ Hz"
+      },
+      {
+        "question_number": "5",
+        "question_type": "assertion_reason",
+        "marks": 1,
+        "chapter_name": "Electric Charges and Fields",
+        "question_text": "Assertion (A): Electric field lines never form closed loops.\nReason (R): Electric field lines start from positive charges and end at negative charges.",
+        "answer_text": "Both A and R are true, and R is the correct explanation of A.\n\nElectric field lines begin at positive charges and terminate at negative charges (or at infinity). Since they do not form closed loops, a static electric field is non-conservative only outside a conductor."
+      },
+      {
+        "question_number": "6",
+        "question_type": "assertion_reason",
+        "marks": 1,
+        "chapter_name": "Electromagnetic Induction",
+        "question_text": "Assertion (A): Lenz's law is a consequence of the law of conservation of energy.\nReason (R): The direction of induced current is always such as to oppose the cause that produces it.",
+        "answer_text": "Both A and R are true, and R is the correct explanation of A.\n\nIf the induced current aided the change in flux, it would produce more flux, leading to more current indefinitely — violating energy conservation."
+      },
+      {
+        "question_number": "7",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Electric Charges and Fields",
+        "question_text": "State Gauss's law in electrostatics. Using it, derive an expression for the electric field due to a uniformly charged infinite plane sheet of surface charge density σ.",
+        "answer_text": "Gauss's Law: The total electric flux through any closed surface is equal to the net charge enclosed divided by ε₀.\n∮E·dA = q_enc/ε₀\n\nDerivation for infinite plane sheet:\n• Choose a cylindrical Gaussian surface with its axis perpendicular to the sheet, area A on each end.\n• Flux through curved surface = 0 (E ⊥ curved surface); flux through both flat ends = 2EA\n• Charge enclosed = σA\n• By Gauss's law: 2EA = σA/ε₀\n• E = σ/(2ε₀), directed perpendicular to the sheet away from it (for σ > 0)."
+      },
+      {
+        "question_number": "8",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Current Electricity",
+        "question_text": "Define drift velocity of electrons in a conductor. Derive the relation between drift velocity and electric current.",
+        "answer_text": "Drift velocity (vd) is the average velocity gained by free electrons in the direction opposite to the applied electric field due to repeated collisions.\n\nDerivation:\n• Consider a conductor of cross-sectional area A, free electron density n, charge e.\n• In time dt, electrons drifting with velocity vd travel a distance vd·dt.\n• Number of electrons crossing area A in dt = n·A·vd·dt\n• Charge flowing: dQ = n·A·vd·dt·e\n• Current: I = dQ/dt = neAvd\n• Therefore: I = neAvd or vd = I/(neA)"
+      },
+      {
+        "question_number": "9",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Electromagnetic Induction",
+        "question_text": "State Faraday's laws of electromagnetic induction. Write the expression for the induced EMF in a coil.",
+        "answer_text": "Faraday's First Law: Whenever the magnetic flux linked with a circuit changes, an EMF is induced in the circuit.\nFaraday's Second Law: The magnitude of the induced EMF is directly proportional to the rate of change of magnetic flux.\n\nMathematically: ε = –dΦ/dt\n\nFor a coil of N turns: ε = –N·dΦ/dt\nThe negative sign is due to Lenz's law (the induced EMF opposes the change in flux)."
+      },
+      {
+        "question_number": "10",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Moving Charges and Magnetism",
+        "question_text": "Using Biot-Savart law, derive an expression for the magnetic field at the centre of a circular current-carrying loop of radius R carrying current I.",
+        "answer_text": "Biot-Savart Law: dB = (μ₀/4π) · I·dl×r̂/r²\n\nFor a circular loop of radius R:\n• Every element dl is perpendicular to the radius vector r (since the loop is circular).\n• dl × r̂ = dl (since angle between them is 90°)\n• All elements are at the same distance R from the centre.\n• All contributions dB point in the same direction (perpendicular to the plane of the loop).\n\nIntegrating around the loop:\nB = (μ₀/4π) · I/R² · ∮dl = (μ₀/4π) · I/R² · 2πR\nB = μ₀I/(2R)\n\nDirection: Given by right-hand rule (curl fingers in direction of current, thumb points in direction of B)."
+      },
+      {
+        "question_number": "11",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Wave Optics",
+        "question_text": "In Young's double slit experiment, the two slits are separated by a distance d. A screen is placed at a distance D from the slits. Derive an expression for the fringe width.",
+        "answer_text": "Let the two slits S₁ and S₂ be separated by distance d, and the screen be at distance D.\n\nPath difference at point P (distance y from centre):\nΔ = S₂P – S₁P ≈ yd/D (for D >> d)\n\nFor bright fringe: Δ = nλ → y_n = nλD/d\nFor dark fringe: Δ = (2n–1)λ/2 → y_n = (2n–1)λD/(2d)\n\nFringe width β = distance between consecutive bright (or dark) fringes:\nβ = y_{n+1} – y_n = (n+1)λD/d – nλD/d\nβ = λD/d\n\nFringe width is independent of the order n."
+      },
+      {
+        "question_number": "12",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Atoms",
+        "question_text": "State Bohr's postulates for the hydrogen atom. Using Bohr's second postulate, derive an expression for the radius of the nth orbit.",
+        "answer_text": "Bohr's Postulates:\n1. Electrons revolve in certain fixed circular orbits (stationary orbits) without radiating energy.\n2. Only those orbits are allowed for which angular momentum L = mvr = nh/(2π), where n = 1, 2, 3… is the principal quantum number.\n3. Radiation is emitted or absorbed only when an electron transitions between orbits: hν = E₁ – E₂.\n\nDerivation of radius of nth orbit:\n• Coulomb force = centripetal force: ke²/r² = mv²/r → mv² = ke²/r …(1)\n• Quantisation: mvr = nh/2π → v = nh/(2πmr) …(2)\n• Substituting (2) in (1): m·n²h²/(4π²m²r²) = ke²/r\n• rₙ = n²h²/(4π²mke²) = n²a₀, where a₀ = 0.529 Å (Bohr radius)"
+      },
+      {
+        "question_number": "13",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Electrostatic Potential and Capacitance",
+        "question_text": "Derive an expression for the energy stored in a parallel plate capacitor of capacitance C charged to a potential difference V. Also find the energy stored in terms of the electric field E between the plates.",
+        "answer_text": "Energy stored in a capacitor:\nAs the capacitor is charged, work is done against the repulsion of charges already on the plate.\n\nLet q be the charge at some instant and C the capacitance.\nPotential at that instant: V' = q/C\nSmall work done to add charge dq: dW = V'·dq = (q/C)dq\n\nTotal work done (= energy stored):\nU = ∫₀^Q (q/C)dq = Q²/(2C) = ½CV² = ½QV\n\nIn terms of electric field:\nFor a parallel plate capacitor: E = V/d and C = ε₀A/d\nEnergy density u = U/(Volume) = U/(Ad) = (½CV²)/(Ad)\n= [½·(ε₀A/d)·(Ed)²]/(Ad) = ½ε₀E²\n\nThis result is general: the energy density in any electric field region is u = ½ε₀E²."
+      },
+      {
+        "question_number": "14",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Alternating Current",
+        "question_text": "Draw a labelled diagram of an AC generator. Explain its working principle and derive an expression for the instantaneous EMF produced.",
+        "answer_text": "AC Generator — Principle: Based on Faraday's law of electromagnetic induction. When a coil rotates in a uniform magnetic field, the magnetic flux through the coil changes periodically, inducing an alternating EMF.\n\nConstruction: A rectangular coil ABCD of N turns, area A, rotates about an axis perpendicular to a uniform magnetic field B.\n\nWorking:\n• When coil plane is parallel to B (θ = 90°), flux Φ = 0 but rate of change is maximum → EMF is maximum.\n• When coil plane is perpendicular to B (θ = 0°), flux Φ = NBA (maximum) but rate of change is zero → EMF is zero.\n\nDerivation:\nΦ = NBA cos(ωt)\nε = –dΦ/dt = NBAω sin(ωt)\nε = ε₀ sin(ωt), where ε₀ = NBAω (peak EMF)\n\nThe EMF varies sinusoidally with time, hence it is alternating."
+      },
+      {
+        "question_number": "15",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Ray Optics and Optical Instruments",
+        "question_text": "Define the term 'critical angle'. Derive the relation between critical angle and refractive index of a medium. What is total internal reflection? Give two applications.",
+        "answer_text": "Critical Angle (C): The angle of incidence in the denser medium for which the angle of refraction in the rarer medium is 90°.\n\nRelation: Using Snell's law at the critical angle:\nn₁ sin C = n₂ sin 90° = n₂\nsin C = n₂/n₁ = 1/n (where n = n₁/n₂ for medium relative to air)\n∴ C = sin⁻¹(1/n)\n\nTotal Internal Reflection (TIR): When light travels from a denser to a rarer medium and the angle of incidence exceeds the critical angle, the light is completely reflected back into the denser medium — no refraction occurs.\n\nConditions for TIR:\n1. Light must travel from denser to rarer medium.\n2. Angle of incidence must be greater than the critical angle.\n\nApplications:\n1. Optical fibres — light signals are transmitted through glass fibres by repeated TIR without energy loss.\n2. Diamonds — cut so that light undergoes TIR multiple times, giving brilliance and sparkle."
+      }
+    ]
+  },
+  {
+    "paper": { "subject": "physics", "exam_year": 2023, "paper_type": "board", "set_code": "1" },
+    "questions": [
+      {
+        "question_number": "1",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Electric Charges and Fields",
+        "question_text": "A point charge Q is kept at the centre of a cube of side a. The electric flux through each face of the cube is",
+        "answer_text": "Q/6ε₀\n\nBy Gauss's law, total flux through the closed cube = Q/ε₀. By symmetry, each of the 6 faces receives equal flux = Q/6ε₀."
+      },
+      {
+        "question_number": "2",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Electromagnetic Waves",
+        "question_text": "Arrange the following electromagnetic waves in increasing order of frequency: infrared, gamma rays, radio waves, X-rays",
+        "answer_text": "Radio waves < Infrared < X-rays < Gamma rays\n\nOrder (low to high frequency): Radio < Microwave < IR < Visible < UV < X-rays < γ-rays."
+      },
+      {
+        "question_number": "3",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Moving Charges and Magnetism",
+        "question_text": "The magnetic force on a current-carrying conductor in a uniform magnetic field is zero when the angle between the current direction and the field is",
+        "answer_text": "0° or 180°\n\nF = BIL sinθ. The force is zero when sinθ = 0, i.e., θ = 0° or 180°."
+      },
+      {
+        "question_number": "4",
+        "question_type": "assertion_reason",
+        "marks": 1,
+        "chapter_name": "Electric Charges and Fields",
+        "question_text": "Assertion (A): Electric field lines do not form closed loops.\nReason (R): Electric field lines originate from positive charges and terminate on negative charges.",
+        "answer_text": "Both A and R are true, and R is the correct explanation of A."
+      },
+      {
+        "question_number": "5",
+        "question_type": "assertion_reason",
+        "marks": 1,
+        "chapter_name": "Electromagnetic Induction",
+        "question_text": "Assertion (A): Lenz's law obeys the law of conservation of energy.\nReason (R): The induced current always opposes the change in magnetic flux that produced it.",
+        "answer_text": "Both A and R are true, and R is the correct explanation of A."
+      },
+      {
+        "question_number": "6",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Electric Charges and Fields",
+        "question_text": "State Gauss's law in electrostatics. Derive the expression for the electric field due to a uniformly charged infinite plane sheet having surface charge density σ.",
+        "answer_text": "Gauss's Law: Total electric flux through any closed surface = net enclosed charge/ε₀, i.e., ∮E·dA = q_enc/ε₀.\n\nFor infinite plane sheet:\n• Cylindrical Gaussian surface, axis ⊥ to sheet, cross-sectional area A.\n• Flux through curved surface = 0; through both flat ends = 2EA.\n• q_enc = σA\n• 2EA = σA/ε₀ → E = σ/(2ε₀)"
+      },
+      {
+        "question_number": "7",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Current Electricity",
+        "question_text": "What is drift velocity? Obtain the relation between drift velocity of electrons and electric current flowing through a conductor.",
+        "answer_text": "Drift velocity is the average velocity acquired by free electrons in a conductor under the influence of an applied electric field.\n\nRelation: I = neAvd\nwhere n = free electron density, e = electron charge, A = cross-section area, vd = drift velocity.\nDerivation: In time dt, electrons drifting with vd pass a distance vd·dt. No. of electrons = n·A·vd·dt; charge dQ = neAvd·dt; current I = dQ/dt = neAvd."
+      },
+      {
+        "question_number": "8",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Electromagnetic Induction",
+        "question_text": "State Faraday's laws of electromagnetic induction. Write the mathematical expression for induced EMF.",
+        "answer_text": "First Law: Whenever the magnetic flux through a circuit changes, an EMF is induced in the circuit.\nSecond Law: The induced EMF is equal to the negative rate of change of magnetic flux.\n\nMathematically: ε = –dΦ/dt\nFor N-turn coil: ε = –N·dΦ/dt\nThe negative sign represents Lenz's law."
+      },
+      {
+        "question_number": "9",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Moving Charges and Magnetism",
+        "question_text": "State Biot-Savart law. Using it, derive the expression for the magnetic field at the centre of a circular coil of radius R carrying current I.",
+        "answer_text": "Biot-Savart Law: The magnetic field dB due to a small current element I·dl at a point P at distance r is:\ndB = (μ₀/4π)·(I·dl × r̂)/r²\n\nFor circular coil of radius R:\n• Every element dl is ⊥ to r̂, so |dl × r̂| = dl.\n• All elements are equidistant from centre (r = R).\n• All dB contributions point in the same direction.\n\nB = ∫dB = (μ₀I/4πR²)∫dl = (μ₀I/4πR²)(2πR) = μ₀I/(2R)"
+      },
+      {
+        "question_number": "10",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Wave Optics",
+        "question_text": "In Young's double-slit experiment, slits are separated by distance d and screen is at distance D. Derive an expression for the width of the bright fringe (fringe width).",
+        "answer_text": "Path difference for point P at distance y from centre: Δ = yd/D\n\nFor bright fringes (constructive interference): Δ = nλ\ny_n = nλD/d\n\nFringe width (β) = distance between consecutive bright fringes:\nβ = y_{n+1} – y_n = (n+1)λD/d – nλD/d = λD/d\n\nThe fringe width β = λD/d is constant and independent of order n."
+      },
+      {
+        "question_number": "11",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Atoms",
+        "question_text": "Write Bohr's postulates for the hydrogen atom. Using Bohr's quantisation condition, derive an expression for the radius of the nth Bohr orbit.",
+        "answer_text": "Bohr's Postulates:\n1. Electrons revolve in stationary circular orbits without radiating energy.\n2. Angular momentum: L = mvr = nh/2π (n = 1, 2, 3…)\n3. Energy is emitted/absorbed only during inter-orbit transitions: hν = E₁ – E₂.\n\nDerivation of rₙ:\nCoulomb force = centripetal force: ke²/r² = mv²/r → ke² = mv²r …(i)\nBohr condition: mvr = nh/2π → v = nh/(2πmr) …(ii)\nSubstituting (ii) in (i): m·n²h²/(4π²m²r²)·r = ke²\nrₙ = n²h²/(4π²mke²) = n²a₀ where a₀ ≈ 0.529 Å"
+      },
+      {
+        "question_number": "12",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Electrostatic Potential and Capacitance",
+        "question_text": "Derive an expression for the energy stored in a capacitor of capacitance C charged to potential V. Express this energy in terms of the electric field between the plates.",
+        "answer_text": "Work done in charging capacitor to charge Q:\ndW = V'dq = (q/C)dq\nU = ∫₀^Q (q/C)dq = Q²/(2C) = ½CV² = ½QV\n\nIn terms of E (for parallel plate capacitor, C = ε₀A/d, V = Ed):\nU = ½·(ε₀A/d)·(Ed)² = ½ε₀E²·(Ad)\nEnergy density u = U/Volume = ½ε₀E²\n\nThis result applies to any electric field region."
+      },
+      {
+        "question_number": "13",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Ray Optics and Optical Instruments",
+        "question_text": "What is total internal reflection? State the conditions required for it. Derive the relation between the critical angle and refractive index. Give two practical applications.",
+        "answer_text": "Total Internal Reflection (TIR): When a ray of light travelling in a denser medium strikes the interface with a rarer medium at an angle greater than the critical angle, it is completely reflected back into the denser medium.\n\nConditions:\n1. Light must travel from denser → rarer medium.\n2. Angle of incidence > critical angle C.\n\nRelation:\nAt critical angle: n₁ sin C = n₂ sin 90°\nsin C = n₂/n₁ = 1/ₙ₁₂\nC = sin⁻¹(1/n)\n\nApplications:\n1. Optical fibres: repeated TIR transmits light signals with minimal loss.\n2. Periscope/binoculars: prisms use TIR (angle of incidence 45° > 42° critical angle of glass) to reflect light."
+      },
+      {
+        "question_number": "14",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Alternating Current",
+        "question_text": "With the help of a labelled diagram, explain the principle and working of an AC generator. Derive the expression for instantaneous EMF.",
+        "answer_text": "Principle: Electromagnetic induction (Faraday's law). A coil rotating in a magnetic field experiences changing flux, inducing alternating EMF.\n\nConstruction: Coil ABCD (N turns, area A) rotates with angular velocity ω in uniform field B. Slip rings and brushes extract the current.\n\nWorking/Derivation:\nAt time t, angle between coil normal and B = ωt\nΦ = NBA cos(ωt)\nε = –dΦ/dt = NBAω sin(ωt)\nε = ε₀ sin(ωt), where ε₀ = NBAω is the peak EMF.\n\nThe EMF alternates sinusoidally — positive when the coil rotates from 0°→180°, negative from 180°→360°."
+      }
+    ]
+  },
+  {
+    "paper": { "subject": "physics", "exam_year": 2022, "paper_type": "board", "set_code": "Term2" },
+    "questions": [
+      {
+        "question_number": "1",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Electromagnetic Induction",
+        "question_text": "State Faraday's laws of electromagnetic induction.",
+        "answer_text": "1st Law: An EMF is induced in a circuit whenever the magnetic flux linking with the circuit changes.\n2nd Law: The magnitude of the induced EMF is equal to the rate of change of the magnetic flux linkage.\nε = –N·dΦ/dt (negative sign due to Lenz's law)."
+      },
+      {
+        "question_number": "2",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Atoms",
+        "question_text": "State Bohr's postulates for the hydrogen atom.",
+        "answer_text": "1. An electron revolves in specific stationary orbits around the nucleus without emitting radiation.\n2. The angular momentum of the electron in a stationary orbit is an integral multiple of h/2π: L = nh/2π.\n3. Radiation is emitted when an electron jumps from a higher energy orbit to a lower one; the energy of the photon = difference in energies of the two orbits: hν = E₂ – E₁."
+      },
+      {
+        "question_number": "3",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Wave Optics",
+        "question_text": "What is meant by fringe width in Young's double slit experiment? Write an expression for it.",
+        "answer_text": "Fringe width (β) is the distance between any two consecutive bright (or dark) fringes.\n\nβ = λD/d\n\nwhere λ = wavelength of light used, D = distance from slits to screen, d = slit separation.\nFringe width is uniform and independent of the order of the fringe."
+      },
+      {
+        "question_number": "4",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Electrostatic Potential and Capacitance",
+        "question_text": "Derive an expression for the energy stored in a parallel plate capacitor. Hence find the energy density.",
+        "answer_text": "Let q be the instantaneous charge and C the capacitance.\ndW = (q/C)dq\nU = ∫₀^Q dW = Q²/(2C) = ½CV²\n\nEnergy density: u = U/(volume between plates) = (½CV²)/(A·d)\n= [½(ε₀A/d)(Ed)²]/(Ad) = ½ε₀E²\n\nwhere E is the electric field between the plates."
+      },
+      {
+        "question_number": "5",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Moving Charges and Magnetism",
+        "question_text": "Using Biot-Savart law, find the magnetic field at the centre of a circular loop of radius R carrying current I.",
+        "answer_text": "Biot-Savart: dB = (μ₀/4π)(Idl sinθ)/r²\n\nFor a circular loop, each element dl is ⊥ to r̂, so sinθ = 1; r = R:\ndB = μ₀I·dl/(4πR²)\n\nIntegrating: B = (μ₀I/4πR²) × 2πR = μ₀I/(2R)\n\nDirection: Perpendicular to the plane of the loop (right-hand rule)."
+      },
+      {
+        "question_number": "6",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Ray Optics and Optical Instruments",
+        "question_text": "State the conditions for total internal reflection. Define critical angle. Derive the relation between the critical angle and the refractive index of the medium. Mention any two applications of total internal reflection.",
+        "answer_text": "Conditions for TIR:\n1. Light travels from optically denser to optically rarer medium.\n2. Angle of incidence exceeds the critical angle.\n\nCritical Angle: The angle of incidence in the denser medium for which the refracted ray just grazes the interface (angle of refraction = 90°).\n\nRelation: n₁ sin C = n₂ sin 90° → sin C = n₂/n₁ → C = sin⁻¹(1/n) for air-medium boundary.\n\nApplications:\n1. Optical fibres — data transmission through glass fibres using repeated TIR.\n2. Sparkling of diamonds — high refractive index (n ≈ 2.42) gives critical angle ≈ 24°; multiple TIR before light exits creates brilliance."
+      },
+      {
+        "question_number": "7",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Alternating Current",
+        "question_text": "Draw a diagram of an AC generator and explain its working. Derive the expression for the EMF generated.",
+        "answer_text": "AC Generator Principle: Faraday's law of electromagnetic induction.\n\nWorking: A rectangular coil of N turns, area A, rotates with angular velocity ω in a uniform magnetic field B.\n\nDerivation:\nAt time t: Φ = NBA cos(ωt)\nε = –dΦ/dt = NBAω sin(ωt)\nPeak EMF: ε₀ = NBAω\nSo ε = ε₀ sin(ωt) — alternating sinusoidal EMF.\n\nThe output is extracted through slip rings and carbon brushes."
+      }
+    ]
+  },
+  {
+    "paper": { "subject": "chemistry", "exam_year": 2024, "paper_type": "board", "set_code": "1" },
+    "questions": [
+      {
+        "question_number": "1",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Electrochemistry",
+        "question_text": "The standard electrode potential (E°) of the hydrogen electrode is taken as",
+        "answer_text": "0.00 V\n\nBy convention, the standard hydrogen electrode (SHE) is assigned E° = 0.00 V at all temperatures, serving as the reference for all other electrode potentials."
+      },
+      {
+        "question_number": "2",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Chemical Kinetics",
+        "question_text": "For a first-order reaction, if the initial concentration is doubled, the half-life",
+        "answer_text": "remains unchanged\n\nFor a first-order reaction: t₁/₂ = 0.693/k. The half-life is independent of initial concentration."
+      },
+      {
+        "question_number": "3",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Solutions",
+        "question_text": "Define the term 'osmotic pressure'. Write the van't Hoff equation for osmotic pressure of a dilute solution.",
+        "answer_text": "Osmotic pressure (π): The excess pressure applied to a solution to prevent osmosis (the flow of solvent through a semi-permeable membrane from the solvent side to the solution side).\n\nVan't Hoff equation:\nπ = CRT = (n/V)RT\nwhere C = molar concentration of solute, R = gas constant, T = temperature in Kelvin.\nFor electrolytes: π = iCRT, where i is the Van't Hoff factor."
+      },
+      {
+        "question_number": "4",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Chemical Kinetics",
+        "question_text": "Define activation energy. How does a catalyst affect the activation energy of a reaction?",
+        "answer_text": "Activation Energy (Ea): The minimum extra energy that molecules must possess above their average energy in order to react and form products.\n\nEffect of catalyst: A catalyst lowers the activation energy by providing an alternative reaction pathway with a lower energy barrier. It does not change the energies of reactants or products (ΔH remains unchanged), only increases the fraction of molecules with sufficient energy to react, thus increasing the rate of reaction."
+      },
+      {
+        "question_number": "5",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Electrochemistry",
+        "question_text": "Write the Nernst equation for an electrode reaction. How does cell EMF vary with concentration of reactants?",
+        "answer_text": "Nernst Equation:\nFor a reaction: aA + bB → cC + dD with n electrons transferred,\nE_cell = E°_cell – (RT/nF) ln Q\nAt 298 K: E_cell = E°_cell – (0.0592/n) log Q\n\nwhere Q = reaction quotient = [C]^c[D]^d / [A]^a[B]^b\n\nEffect on EMF:\n• Increasing concentration of reactants increases Q → decreases log Q... wait, no: increasing reactants decreases Q → E_cell increases.\n• Increasing concentration of products increases Q → E_cell decreases.\nAt equilibrium, E_cell = 0 and Q = K_eq."
+      },
+      {
+        "question_number": "6",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Coordination Compounds",
+        "question_text": "Using IUPAC nomenclature rules, write the systematic names of: (i) [Co(NH₃)₆]Cl₃ (ii) K₂[PtCl₄]",
+        "answer_text": "(i) [Co(NH₃)₆]Cl₃\nHexaamminecobalt(III) chloride\n• 6 NH₃ ligands = hexaammine, Co oxidation state = +3, Cl⁻ counter ions.\n\n(ii) K₂[PtCl₄]\nPotassium tetrachloridoplatinate(II)\n• 4 Cl⁻ ligands = tetrachloro, Pt oxidation state = +2, K⁺ counter cations; complex is anionic so 'ate' suffix on Pt."
+      },
+      {
+        "question_number": "7",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Electrochemistry",
+        "question_text": "Explain the construction and working of a standard hydrogen electrode. How is it used to determine the electrode potential of other half-cells?",
+        "answer_text": "Standard Hydrogen Electrode (SHE):\nConstruction: A platinum electrode coated with platinum black is immersed in a 1 M H⁺ solution (HCl). Pure hydrogen gas at 1 atm is bubbled over the electrode. Temperature = 298 K.\n\nReaction: 2H⁺(aq) + 2e⁻ ⇌ H₂(g), E° = 0.00 V (by convention)\n\nDetermining electrode potential:\n• The unknown half-cell is coupled with the SHE.\n• If the unknown electrode is cathode (reduction), E°_cell = E°_unknown – 0.00 = E°_unknown (positive).\n• If it is anode (oxidation), E°_cell = 0.00 – E°_unknown → E°_unknown is negative.\n• By measuring the EMF of the cell and knowing which is anode/cathode, we find E°_unknown.\n\nLimitation: SHE is difficult to maintain experimentally (pure H₂, exactly 1 M H⁺). Secondary reference electrodes like SCE (calomel) are used practically."
+      },
+      {
+        "question_number": "8",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Chemical Kinetics",
+        "question_text": "Define order of reaction and molecularity. Derive an integrated rate law expression for a first-order reaction and show how the rate constant is determined graphically.",
+        "answer_text": "Order of reaction: The sum of the powers to which concentration terms are raised in the experimentally determined rate law. E.g., for r = k[A]^m[B]^n, order = m + n.\n\nMolecularity: The number of molecules of reactants that actually collide in an elementary step. It is always a whole number (1, 2, 3).\n\nFirst-order integrated rate law:\nFor A → products, rate = –d[A]/dt = k[A]\nd[A]/[A] = –k·dt\nIntegrating: ln[A] = –kt + ln[A]₀\nor [A] = [A]₀ e^(–kt)\nor k = (1/t) ln([A]₀/[A])\n\nGraphical determination:\nPlot ln[A] vs. t → straight line with slope = –k and intercept = ln[A]₀.\nHalf-life: t₁/₂ = 0.693/k (independent of [A]₀)."
+      }
+    ]
+  },
+  {
+    "paper": { "subject": "chemistry", "exam_year": 2023, "paper_type": "board", "set_code": "1" },
+    "questions": [
+      {
+        "question_number": "1",
+        "question_type": "mcq",
+        "marks": 1,
+        "chapter_name": "Electrochemistry",
+        "question_text": "The standard electrode potential of the standard hydrogen electrode is",
+        "answer_text": "0.00 V\n\nThe standard hydrogen electrode is the primary reference electrode and its standard electrode potential is assigned as exactly zero by international convention."
+      },
+      {
+        "question_number": "2",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Solutions",
+        "question_text": "What is osmotic pressure? Write the mathematical expression relating osmotic pressure of a solution to its concentration.",
+        "answer_text": "Osmotic pressure: The pressure required to prevent osmosis — the movement of solvent from its pure state through a semi-permeable membrane into the solution.\n\nVan't Hoff equation: π = CRT = (n/V)RT\nwhere C = molar concentration, R = universal gas constant, T = absolute temperature.\nFor electrolytes: π = i·CRT (i = Van't Hoff factor)."
+      },
+      {
+        "question_number": "3",
+        "question_type": "short",
+        "marks": 2,
+        "chapter_name": "Chemical Kinetics",
+        "question_text": "What is activation energy of a reaction? How does a catalyst help in increasing the rate of reaction?",
+        "answer_text": "Activation energy: The minimum energy that colliding molecules must possess for a collision to result in the formation of products.\n\nA catalyst provides an alternative reaction mechanism with lower activation energy. This allows a greater proportion of molecules to cross the energy barrier, thus increasing the rate of reaction without itself being consumed."
+      },
+      {
+        "question_number": "4",
+        "question_type": "short",
+        "marks": 3,
+        "chapter_name": "Electrochemistry",
+        "question_text": "Write the Nernst equation for the cell reaction. Calculate the cell EMF for a reaction where E°_cell = 1.10 V, n = 2, and Q = 100 at 298 K.",
+        "answer_text": "Nernst equation: E_cell = E°_cell – (0.0592/n) log Q (at 298 K)\n\nGiven: E°_cell = 1.10 V, n = 2, Q = 100\nE_cell = 1.10 – (0.0592/2) × log(100)\n= 1.10 – 0.0296 × 2\n= 1.10 – 0.0592\n= 1.04 V"
+      },
+      {
+        "question_number": "5",
+        "question_type": "long",
+        "marks": 5,
+        "chapter_name": "Chemical Kinetics",
+        "question_text": "Distinguish between order and molecularity of a reaction. Derive the integrated rate expression for a first-order reaction and explain how the rate constant can be determined graphically.",
+        "answer_text": "Order vs Molecularity:\n• Order: experimental, can be fractional or zero; sum of exponents in rate law.\n• Molecularity: theoretical, always a positive integer; number of molecules in elementary step.\n\nFirst-order integrated rate law derivation:\n–d[A]/dt = k[A]\nd[A]/[A] = –k dt\nIntegrating: ln([A]₀/[A]) = kt\nk = (2.303/t) log([A]₀/[A])\n[A] = [A]₀e^(–kt)\n\nGraphical method: Plot log[A] vs t → straight line with slope = –k/2.303; y-intercept = log[A]₀.\nt₁/₂ = 0.693/k (constant, independent of initial concentration)."
+      }
+    ]
+  }
+]

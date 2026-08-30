@@ -1,8 +1,42 @@
-﻿import { useState, useEffect } from 'react';
-import { ArrowLeft, ExternalLink, FileText, List } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowLeft, ExternalLink, FileText, List, AlertCircle } from 'lucide-react';
 import { papers as papersApi } from '../lib/api';
 import { SUBJECT_META } from '../lib/constants';
 import QuestionRow from './QuestionRow';
+
+function PdfFrame({ url, title }) {
+  const [status, setStatus] = useState('loading'); // loading | ok | error
+
+  // Use our server-side proxy so CBSE PDFs load inside the iframe
+  const token = localStorage.getItem('cbse-token');
+  const proxyUrl = `/api/pdf-proxy?url=${encodeURIComponent(url)}`;
+
+  return (
+    <div style={{ position: 'relative' }}>
+      {status === 'loading' && (
+        <div className="pdf-loading-banner">Loading PDF&hellip;</div>
+      )}
+      {status === 'error' && (
+        <div className="pdf-error-banner">
+          <AlertCircle size={16} />
+          <span>Could not load PDF inline.</span>
+          <a href={url} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm" style={{ marginLeft: 8 }}>
+            <ExternalLink size={13} /> Open in new tab
+          </a>
+        </div>
+      )}
+      <iframe
+        key={url}
+        src={proxyUrl}
+        className="pdf-frame"
+        title={title}
+        onLoad={() => setStatus('ok')}
+        onError={() => setStatus('error')}
+        style={{ display: status === 'error' ? 'none' : 'block' }}
+      />
+    </div>
+  );
+}
 
 export default function PaperDetail({ paperId, onBack }) {
   const [paper, setPaper] = useState(null);
@@ -63,29 +97,20 @@ export default function PaperDetail({ paperId, onBack }) {
 
       {view === 'pdf' && (
         <div>
-          {paper.paper_url ? (
-            <iframe
-              src={`https://docs.google.com/viewer?url=${encodeURIComponent(paper.paper_url)}&embedded=true`}
-              className="pdf-frame"
-              title="Question Paper"
-            />
-          ) : (
-            <div className="pdf-unavailable">
-              <FileText size={32} />
-              <p>PDF not yet linked</p>
-              <p className="text-xs">Ask admin to add the official CBSE paper URL</p>
-            </div>
-          )}
-          {paper.answer_key_url && (
-            <div style={{ marginTop: 16 }}>
-              <div className="flex-row mb-4">
-                <h3 className="card-title">Marking Scheme</h3>
+          {paper.paper_url
+            ? <PdfFrame url={paper.paper_url} title="Question Paper" />
+            : (
+              <div className="pdf-unavailable">
+                <FileText size={32} />
+                <p>PDF not yet linked</p>
+                <p className="text-xs">Ask admin to add the official CBSE paper URL</p>
               </div>
-              <iframe
-                src={`https://docs.google.com/viewer?url=${encodeURIComponent(paper.answer_key_url)}&embedded=true`}
-                className="pdf-frame"
-                title="Marking Scheme"
-              />
+            )
+          }
+          {paper.answer_key_url && (
+            <div style={{ marginTop: 24 }}>
+              <h3 className="card-title" style={{ marginBottom: 8 }}>Marking Scheme</h3>
+              <PdfFrame url={paper.answer_key_url} title="Marking Scheme" />
             </div>
           )}
         </div>
@@ -102,7 +127,10 @@ export default function PaperDetail({ paperId, onBack }) {
             </label>
           </div>
           {(paper.questions || []).length === 0 ? (
-            <div className="empty-state"><h3>No questions added yet</h3><p>Admin can add questions via the Admin Panel.</p></div>
+            <div className="empty-state">
+              <h3>No questions added yet</h3>
+              <p>Questions for this paper are being seeded. Switch to PDF View to read the paper directly.</p>
+            </div>
           ) : (
             <div className="question-list">
               {(paper.questions || []).map(q => (
@@ -115,4 +143,3 @@ export default function PaperDetail({ paperId, onBack }) {
     </div>
   );
 }
-

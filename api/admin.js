@@ -16,27 +16,28 @@ async function requireAdmin(req, res) {
   return data;
 }
 
+const STOP = new Set(['a','an','the','is','are','was','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','shall','can','to','of','in','on','at','for','with','by','from','and','or','but','if','as','it','its','this','that','these','those','not','no','so','such','each','other','into','about','through','during','what','which','who','when','where','how']);
+
 function normalize(text) {
   return (text || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
 }
 
+function termFreq(text) {
+  const counts = {};
+  for (const w of text.split(' ')) {
+    if (w.length > 2 && !STOP.has(w)) counts[w] = (counts[w] || 0) + 1;
+  }
+  return counts;
+}
+
 function cosineSimilarity(a, b) {
-  const tfidf = new natural.TfIdf();
-  tfidf.addDocument(a);
-  tfidf.addDocument(b);
-  const terms = new Set([...a.split(' '), ...b.split(' ')]);
-  const vec = (docIdx) => {
-    const v = {};
-    tfidf.listTerms(docIdx).forEach(t => { v[t.term] = t.tfidf; });
-    return v;
-  };
-  const v1 = vec(0), v2 = vec(1);
+  const v1 = termFreq(a), v2 = termFreq(b);
+  const terms = new Set([...Object.keys(v1), ...Object.keys(v2)]);
   let dot = 0, mag1 = 0, mag2 = 0;
-  terms.forEach(t => {
-    dot += (v1[t] || 0) * (v2[t] || 0);
-    mag1 += (v1[t] || 0) ** 2;
-    mag2 += (v2[t] || 0) ** 2;
-  });
+  for (const t of terms) {
+    const x = v1[t] || 0, y = v2[t] || 0;
+    dot += x * y; mag1 += x * x; mag2 += y * y;
+  }
   if (!mag1 || !mag2) return 0;
   return dot / (Math.sqrt(mag1) * Math.sqrt(mag2));
 }
@@ -121,8 +122,6 @@ module.exports = async (req, res) => {
   if (req.method === 'POST' && action === 'detect') {
     const session = await requireAdmin(req, res);
     if (!session) return;
-    // Lazy-load natural here only — avoids crashing the whole module on import
-    const natural = require('natural');
     const { subject } = req.body || {};
 
     const { data: questions } = await supabase
