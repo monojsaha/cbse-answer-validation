@@ -1,5 +1,68 @@
-﻿import { FlaskConical, Calculator, Monitor, ChevronRight } from 'lucide-react';
+﻿import { FlaskConical, Calculator, Monitor, ChevronRight, BookOpen, BarChart2, RefreshCw, Download, Search, Shield } from 'lucide-react';
 import { SUBJECT_META } from '../lib/constants';
+
+const GUIDE_STEPS = [
+  {
+    icon: Search,
+    title: 'Browse Papers',
+    color: '#2563eb',
+    steps: [
+      'Click any subject card or go to the Papers tab.',
+      'Filter by Subject, Year, Type (Board / SQP) and Set.',
+      'Click a paper card to open it.',
+    ],
+  },
+  {
+    icon: BookOpen,
+    title: 'Read Questions',
+    color: '#7c3aed',
+    steps: [
+      'Questions are listed on-screen with marks, type and topic tags.',
+      'Tick "Show answer keys" to reveal model answers inline.',
+      'Click "Question Paper" to open the original PDF on the CBSE website.',
+    ],
+  },
+  {
+    icon: Download,
+    title: 'Download Marking Scheme',
+    color: '#059669',
+    steps: [
+      'Marking schemes are available for SQP (Sample Question Paper) entries.',
+      'Click the blue "Marking Scheme" button — the PDF saves to your device.',
+      'Board exam marking schemes are not publicly hosted by CBSE.',
+    ],
+  },
+  {
+    icon: BarChart2,
+    title: 'Topic Distribution',
+    color: '#d97706',
+    steps: [
+      'Go to the Topic Distribution tab and choose a subject.',
+      'The heatmap shows official CBSE marks weightage per chapter.',
+      'Year columns fill in as questions are tagged by the admin.',
+    ],
+  },
+  {
+    icon: RefreshCw,
+    title: 'Repeated Questions',
+    color: '#dc2626',
+    steps: [
+      'Go to the Repeated Questions tab.',
+      'Filter by subject to see questions that appeared in multiple years.',
+      'Similarity score ≥ 80% is required; admin confirms each match.',
+    ],
+  },
+  {
+    icon: Shield,
+    title: 'Admin Panel',
+    color: '#6366f1',
+    steps: [
+      'Only visible to admin accounts.',
+      'Add / edit papers, tag questions with chapters, and manage topics.',
+      'Run auto-detect to find repeated questions across all papers.',
+    ],
+  },
+];
 
 const SUBJECTS = [
   { key: 'physics', icon: FlaskConical },
@@ -58,7 +121,31 @@ export default function HomePage({ onNavigate }) {
         })}
       </div>
 
-      <div className="card mt-4" style={{ marginTop: 32 }}>
+      {/* ── User Guide ── */}
+      <div style={{ marginTop: 40 }}>
+        <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: 4 }}>How to Use This Portal</h3>
+        <p style={{ fontSize: '0.875rem', color: 'var(--text-3)', marginBottom: 20 }}>Follow these steps to get the most out of the CBSE Class 12 Science question paper portal.</p>
+        <div className="guide-grid">
+          {GUIDE_STEPS.map(({ icon: Icon, title, color, steps }) => (
+            <div key={title} className="guide-card">
+              <div className="guide-icon" style={{ background: color + '18', color }}>
+                <Icon size={20} />
+              </div>
+              <div className="guide-content">
+                <div className="guide-title">{title}</div>
+                <ol className="guide-steps">
+                  {steps.map((s, i) => (
+                    <li key={i}>{s}</li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── About ── */}
+      <div className="card" style={{ marginTop: 32 }}>
         <div className="card-header">
           <h3 className="card-title">About This Portal</h3>
         </div>

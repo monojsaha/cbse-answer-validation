@@ -225,6 +225,15 @@ input, textarea, select { font-family: inherit; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* User Guide */
+.guide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.guide-card { display: flex; gap: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+.guide-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.guide-content { flex: 1; min-width: 0; }
+.guide-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.guide-steps { padding-left: 16px; display: flex; flex-direction: column; gap: 5px; }
+.guide-steps li { font-size: 0.85rem; color: var(--text-2); line-height: 1.45; }
+
 /* ═══ RESPONSIVE ══════════════════════════════════════════════════════════════ */
 
 /* Scrollable wrapper for wide tables */
@@ -283,6 +292,7 @@ input, textarea, select { font-family: inherit; }
 
   /* Home */
   .home-header h2 { font-size: 1.2rem; }
+  .guide-grid { grid-template-columns: 1fr; }
 }
 
 /* Tablet only (641px – 1024px) */
