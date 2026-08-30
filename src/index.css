@@ -92,10 +92,12 @@ input, textarea, select { font-family: inherit; }
 .badge-neutral { background: var(--surface-2); color: var(--text-3); }
 
 /* Subject colors */
+.subject-english { --subj-color: #0891b2; --subj-bg: #ecfeff; }
 .subject-physics { --subj-color: #2563eb; --subj-bg: #eff6ff; }
 .subject-chemistry { --subj-color: #7c3aed; --subj-bg: #f5f3ff; }
 .subject-mathematics { --subj-color: #d97706; --subj-bg: #fffbeb; }
 .subject-computer_science { --subj-color: #059669; --subj-bg: #ecfdf5; }
+[data-theme="dark"] .subject-english { --subj-bg: #0c2d35; }
 [data-theme="dark"] .subject-physics { --subj-bg: #1e3a5f; }
 [data-theme="dark"] .subject-chemistry { --subj-bg: #2d1b5e; }
 [data-theme="dark"] .subject-mathematics { --subj-bg: #2d1f08; }

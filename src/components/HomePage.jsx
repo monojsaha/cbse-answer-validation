@@ -65,6 +65,7 @@ const GUIDE_STEPS = [
 ];
 
 const SUBJECTS = [
+  { key: 'english', icon: BookOpen },
   { key: 'physics', icon: FlaskConical },
   { key: 'chemistry', icon: FlaskConical },
   { key: 'mathematics', icon: Calculator },
@@ -76,12 +77,12 @@ export default function HomePage({ onNavigate }) {
     <div>
       <div className="home-header">
         <h2>CBSE Class 12 Science &mdash; Question Paper Portal</h2>
-        <p>Browse official past papers, answer keys, topic distribution and more for Physics, Chemistry, Mathematics &amp; Computer Science.</p>
+        <p>Browse official past papers, answer keys, topic distribution and more for English Core, Physics, Chemistry, Mathematics &amp; Computer Science.</p>
       </div>
 
       <div className="stats-row">
         <div className="stat-card">
-          <div className="stat-card-val">4</div>
+          <div className="stat-card-val">5</div>
           <div className="stat-card-label">Subjects</div>
         </div>
         <div className="stat-card">
@@ -151,7 +152,7 @@ export default function HomePage({ onNavigate }) {
         </div>
         <ul style={{ listStyle: 'disc', paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8, fontSize: '0.9rem', color: 'var(--text-2)' }}>
           <li>All question papers and marking schemes are sourced strictly from official CBSE portals (cbse.gov.in and cbseacademic.nic.in).</li>
-          <li>Covers board exam papers (2020, 2022 Term 1, 2022 Term 2, 2023, 2024) and Sample Question Papers (SQPs).</li>
+          <li>Covers board exam papers (2020, 2022 Term 1, 2022 Term 2, 2023, 2024) and Sample Question Papers (SQPs) for all 5 subjects.</li>
           <li>2021 board exams were fully cancelled by CBSE &mdash; no papers available for that year.</li>
           <li>Topic-wise distribution is based on official CBSE unit-wise syllabus marks weightage.</li>
           <li>Repeated questions are algorithmically detected (&ge;80% text similarity) and admin-verified.</li>
