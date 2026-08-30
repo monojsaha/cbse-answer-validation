@@ -10,7 +10,7 @@ const ALLOWED_HOSTS = ['cbse.gov.in', 'cbseacademic.nic.in', 'cbseacademic.in'];
 async function requireAuth(req, res) {
   const token = (req.headers['authorization'] || '').replace('Bearer ', '').trim();
   if (!token) { res.status(401).json({ error: 'Unauthorized' }); return false; }
-  const { data } = await supabase.from('sessions').select('id').eq('token', token).gt('expires_at', new Date().toISOString()).single();
+  const { data } = await supabase.from('sessions').select('token').eq('token', token).gt('expires_at', new Date().toISOString()).single();
   if (!data) { res.status(401).json({ error: 'Unauthorized' }); return false; }
   return true;
 }
